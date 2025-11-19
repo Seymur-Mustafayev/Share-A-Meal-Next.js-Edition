@@ -1,5 +1,8 @@
 'use client'
 
+export const dynamic = "force-dynamic";  
+export const revalidate = 0;
+
 import ImagePicker from '@/components/meals/image-picker';
 import classes from './page.module.css';
 import { MealData } from '@/lib/actions';
@@ -19,16 +22,18 @@ export default function ShareMealPage() {
         </h1>
         <p>Or any other meal you feel needs sharing!</p>
       </header>
-
       <main className={classes.main}>
         <form className={classes.form} action={formAction}>
-          {/* inputs */}
-          <ImagePicker label="Your Image" name='image' />
+          {/* ...INPUTLAR... */}
 
-          {state.message && <p className="error-message">{state.message}</p>}
+          <ImagePicker label="Your Image" name="image" />
+
+          {state.message && (
+            <p className="error-message">{state.message}</p>
+          )}
 
           <p className={classes.actions}>
-            <ShareButton/>
+            <ShareButton />
           </p>
         </form>
       </main>
