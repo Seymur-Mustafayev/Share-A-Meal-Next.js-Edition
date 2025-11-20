@@ -1,15 +1,15 @@
 'use client'
+
 import ImagePicker from '@/components/meals/image-picker';
 import classes from './page.module.css';
 import { MealData } from '@/lib/actions';
 import ShareButton from '@/components/meals/share-button';
 import { useFormState } from 'react-dom';
 
-const initialState={message:null}
+const initialState = { message: null };
 
 export default function ShareMealPage() {
- const [state,formAction] =useFormState(MealData,initialState)
- 
+  const [state, formAction] = useFormState(MealData, initialState);
 
   return (
     <>
@@ -19,43 +19,44 @@ export default function ShareMealPage() {
         </h1>
         <p>Or any other meal you feel needs sharing!</p>
       </header>
+
       <main className={classes.main}>
         <form className={classes.form} action={formAction}>
           <div className={classes.row}>
             <p>
               <label htmlFor="name">Your name</label>
-              <input type="text" id="name" name="name"  />
+              <input type="text" id="name" name="name" />
             </p>
+
             <p>
               <label htmlFor="email">Your email</label>
-              <input type="email" id="email" name="email"  />
+              <input type="email" id="email" name="email" />
             </p>
           </div>
+
           <p>
             <label htmlFor="title">Title</label>
-            <input type="text" id="title" name="title"  />
+            <input type="text" id="title" name="title" />
           </p>
+
           <p>
             <label htmlFor="summary">Short Summary</label>
-            <input type="text" id="summary" name="summary"  />
+            <input type="text" id="summary" name="summary" />
           </p>
-          <p> 
+
+          <p>
             <label htmlFor="instructions">Instructions</label>
-            <textarea
-              id="instructions"
-              name="instructions"
-              rows="10"
-            ></textarea>
+            <textarea id="instructions" name="instructions" rows="10"></textarea>
           </p>
-         
-          <ImagePicker label="Your Image" name='image' />
+
+          <ImagePicker label="Your Image" name="image" />
+
           <p className="error-message">
-                {/* Serverdən gələn mesajı göstərin */}
-                {state.message && <p>{state.message}</p>}
-            </p>
+            {state.message && <p>{state.message}</p>}
+          </p>
+
           <p className={classes.actions}>
-            
-           <ShareButton/>
+            <ShareButton />
           </p>
         </form>
       </main>
