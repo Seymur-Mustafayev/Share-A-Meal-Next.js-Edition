@@ -1,8 +1,5 @@
 'use client'
 
-export const dynamic = "force-dynamic";  
-export const revalidate = 0;
-
 import ImagePicker from '@/components/meals/image-picker';
 import classes from './page.module.css';
 import { MealData } from '@/lib/actions';
@@ -22,15 +19,41 @@ export default function ShareMealPage() {
         </h1>
         <p>Or any other meal you feel needs sharing!</p>
       </header>
+
       <main className={classes.main}>
         <form className={classes.form} action={formAction}>
-          {/* ...INPUTLAR... */}
+          <div className={classes.row}>
+            <p>
+              <label htmlFor="name">Your name</label>
+              <input type="text" id="name" name="name" />
+            </p>
+
+            <p>
+              <label htmlFor="email">Your email</label>
+              <input type="email" id="email" name="email" />
+            </p>
+          </div>
+
+          <p>
+            <label htmlFor="title">Title</label>
+            <input type="text" id="title" name="title" />
+          </p>
+
+          <p>
+            <label htmlFor="summary">Short Summary</label>
+            <input type="text" id="summary" name="summary" />
+          </p>
+
+          <p>
+            <label htmlFor="instructions">Instructions</label>
+            <textarea id="instructions" name="instructions" rows="10"></textarea>
+          </p>
 
           <ImagePicker label="Your Image" name="image" />
 
-          {state.message && (
-            <p className="error-message">{state.message}</p>
-          )}
+          <p className="error-message">
+            {state.message && <p>{state.message}</p>}
+          </p>
 
           <p className={classes.actions}>
             <ShareButton />
